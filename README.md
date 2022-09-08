@@ -1,6 +1,9 @@
 # miniJavaTestBankAccount
+
 mini Java test to call methods from one class to another, using object-oriented programming.
+
 class accountOp:
+
     welcomeUser();
     checkBalance();
     makeDeposit();
