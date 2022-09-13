@@ -1,45 +1,97 @@
 package BankAccount;
 
-public class accountOp {
+public class AccountOp {
 	
-	int numAccount;
-	String nameAccount;
-	double balanceAccount;
-	double limitOverdraftAccount;
-	boolean overdraftUse;
+	private int numAccount;
+	private String nameAccount;
+	private double balanceAccount;
+	private double limitOverdraftAccount;
+	private boolean overdraftUse;
 	
-	void welcomeUser() {
+	/* numAccount set and get */
+	public int getNumAccount() {
+		return numAccount;
+	}
+	public void setNumAccount(int numAccount) {
+		this.numAccount = numAccount;		
+	}
+	
+	/* nameAccount set and get */
+	public String getNameAccount() {
+		return nameAccount;
+	}
+	public void setNameAccount(String nameAccount) {
+		this.nameAccount = nameAccount;
+	}
+	
+	/* balanceAccount set and get */
+	public double getBalanceAccount() {
+		return balanceAccount;
+	}
+	public void setBalanceAccount(double balanceAccount) {
+		this.balanceAccount = balanceAccount;
+	}
+	
+	/* limitOverdraftAccount set and get */
+	public double getLimitOverdraftAccount() {
+		return limitOverdraftAccount;
+	}	
+	public void setLimitOverdraftAccount(double limitOverdraftAccount) {
+		this.limitOverdraftAccount = limitOverdraftAccount;
+	}
+	
+	/* overdraftUse set and get */
+	public boolean isOverdraftUse() {
+		return overdraftUse;
+	}
+	public void setOverdraftUse(boolean overdraftUse) {
+		this.overdraftUse = overdraftUse;
+	}
+	
+	public AccountOp() {
+		
+	}
+	
+	public AccountOp(int numAccount, String nameAccount, double balanceAccount,
+			double limitOverdraftAccount, boolean overdraftUse) {
+		this.numAccount = numAccount;
+		this.nameAccount = nameAccount;
+		this.balanceAccount = balanceAccount;
+		this.limitOverdraftAccount = limitOverdraftAccount;
+		this.overdraftUse = overdraftUse;
+	}
+
+	/* operations */
+	public void welcomeUser() {
 		System.out.printf("-------------------------%n"
 				+ "Welcome, %s!%n"
-				+ "-------------------------%n%n", nameAccount);
+				+ "-------------------------%n%n", getNameAccount());
 	}
 	
-	void checkBalance() {
-		System.out.printf("Your current balance account is $%.2f.%n%n", balanceAccount);
-
+	public void checkBalance() {
+		System.out.printf("Your current balance account is $%.2f.%n%n", getBalanceAccount());
 	}
 	
-	void makeDeposit(double depositAmount) {
+	public void makeDeposit(double depositAmount) {
 		this.balanceAccount += depositAmount;
 		System.out.printf("--Deposit made successfully!--%n%n");
 
 	}
 	
-	void checkOverdraftUse() {
+	public void checkOverdraftUse() {
 		if(balanceAccount + limitOverdraftAccount >= limitOverdraftAccount) {
-			overdraftUse = false;
+			setOverdraftUse(false);
 			System.out.printf("--You are not using overdraft!--%n%n");
 
 		}
 		else {
-			overdraftUse = true;
 			System.out.printf("--You are using overdraft!--%n%n");
 		}
 	}
 	
-	void makeWithdrawal(double withdrawalAmount) {
+	public void makeWithdrawal(double withdrawalAmount) {
 		if(withdrawalAmount <= balanceAccount + limitOverdraftAccount) {
-			balanceAccount -= withdrawalAmount;
+			this.balanceAccount -= withdrawalAmount;
 			System.out.printf("--$%.2f successfully withdrawn!--%n%n", withdrawalAmount);
 		}
 		else {
@@ -49,9 +101,9 @@ public class accountOp {
 		}
 	}	
 		
-	void makeTransfer(double transferredAmount, int numAccount) {
+	public void makeTransfer(double transferredAmount, int numAccount) {
 		if(balanceAccount + limitOverdraftAccount >= transferredAmount) {
-			balanceAccount -= transferredAmount;
+			this.balanceAccount -= transferredAmount;
 			System.out.printf("--Transfer made successfully!--%n%n");
 		}
 			
